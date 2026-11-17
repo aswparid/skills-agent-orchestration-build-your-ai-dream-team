@@ -1,0 +1,36 @@
+{
+  "projects": [
+    {
+      "name": "Community Garden Network",
+      "owner": "Maya Chen",
+      "status": "In progress",
+      "recentActivity": "Volunteer sign-ups opened for the spring planting days; the Eastside site still needs two weekend leads.",
+      "priority": "High",
+      "summary": "Help neighbors turn unused lots into welcoming gardens. New contributors can support volunteer outreach or map accessible routes."
+    },
+    {
+      "name": "Open Data Toolkit",
+      "owner": "Jordan Ellis",
+      "status": "Planning",
+      "recentActivity": "The team reviewed the first draft of the dataset guide and collected feedback from three partner groups.",
+      "priority": "Medium",
+      "summary": "Make local public data easier to find and understand. We’re looking for help testing plain-language guides and examples."
+    },
+    {
+      "name": "Youth Skills Exchange",
+      "owner": "Priya Nair",
+      "status": "In progress",
+      "recentActivity": "The mentoring pilot matched its first 12 learners with volunteer coaches this week.",
+      "priority": "High",
+      "summary": "Connect young people with practical, peer-led learning opportunities. Contributors can help shape workshop topics and mentor onboarding."
+    },
+    {
+      "name": "Neighborhood Stories Archive",
+      "owner": "Luis Romero",
+      "status": "On track",
+      "recentActivity": "Eight oral-history recordings were transcribed and are ready for a community review session on Thursday.",
+      "priority": "Low",
+      "summary": "Preserve the everyday histories that make our neighborhoods unique. Join the review crew to check transcripts and add helpful tags."
+    }
+  ]
+}

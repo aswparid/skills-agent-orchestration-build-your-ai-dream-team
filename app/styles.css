@@ -1,0 +1,372 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+:root {
+  color-scheme: light;
+  --ink: #1c2925;
+  --muted: #596862;
+  --soft: #596862;
+  --green: #245c48;
+  --green-dark: #194733;
+  --green-pale: #e8f2eb;
+  --paper: #fffefa;
+  --canvas: #f4f6f2;
+  --line: #e2e8e1;
+  --amber: #80530d;
+  --amber-pale: #fff2d6;
+  --rose: #8a3d3a;
+  --rose-pale: #fae9e6;
+  --blue: #365b7d;
+  --blue-pale: #e8f0f8;
+  font-family: "DM Sans", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--canvas);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 85% 2%, rgba(216, 231, 216, 0.55), transparent 34rem),
+    var(--canvas);
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid #b66a21;
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  z-index: 2;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.7rem 1rem;
+  transform: translateY(-160%);
+  border-radius: 0.5rem;
+  background: var(--green-dark);
+  color: white;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 1.4rem 2.5rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  font-size: 1.08rem;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+}
+
+.brand strong {
+  font-weight: 800;
+}
+
+.brand-mark {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 0.7rem;
+  background: var(--green);
+  color: white;
+  font-family: "Manrope", sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.header-note,
+.section-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.dashboard {
+  width: min(100% - 5rem, 1120px);
+  margin: 0 auto;
+}
+
+.intro {
+  padding: 4.1rem 0 3.1rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.7rem;
+  color: var(--green);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Manrope", "Segoe UI", sans-serif;
+}
+
+h1 {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(2.5rem, 6vw, 4.2rem);
+  font-weight: 700;
+  letter-spacing: -0.065em;
+  line-height: 1.07;
+}
+
+.intro-copy {
+  max-width: 600px;
+  margin: 1.15rem 0 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.projects-section {
+  padding: 2.25rem 0 4.6rem;
+  border-top: 1px solid #dfe5dd;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.section-heading .eyebrow {
+  margin-bottom: 0.35rem;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: -0.05em;
+}
+
+.section-note {
+  padding-bottom: 0.35rem;
+}
+
+.project-count {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.load-message {
+  margin: 1.5rem 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.load-message:empty {
+  display: none;
+}
+
+.empty-message,
+.error-message {
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+  background: var(--paper);
+}
+
+.error-message {
+  border-color: #e7c7c1;
+  background: #fff7f5;
+  color: #752c27;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.project-card {
+  min-width: 0;
+  padding: 1.5rem 1.55rem 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--paper);
+  box-shadow: 0 6px 22px rgba(37, 55, 45, 0.045), 0 1px 3px rgba(37, 55, 45, 0.04);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(37, 55, 45, 0.09), 0 2px 6px rgba(37, 55, 45, 0.04);
+}
+
+.card-topline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.55rem;
+  margin-bottom: 1.15rem;
+}
+
+.status-pill,
+.priority-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  padding: 0.24rem 0.62rem;
+  border-radius: 999px;
+  font-size: 0.73rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.status-pill {
+  background: var(--green-pale);
+  color: #214e3c;
+}
+
+.priority-label {
+  background: #f0f2ed;
+  color: #46534b;
+}
+
+.project-name {
+  margin: 0;
+  font-size: 1.28rem;
+  letter-spacing: -0.045em;
+  line-height: 1.35;
+}
+
+.project-owner {
+  margin: 0.28rem 0 0;
+  color: var(--muted);
+  font-size: 0.83rem;
+}
+
+.project-summary {
+  min-height: 3.3rem;
+  margin: 1rem 0 1.2rem;
+  color: #35443d;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.recent-activity {
+  padding-top: 0.95rem;
+  border-top: 1px solid #edf0eb;
+}
+
+.recent-activity h4 {
+  margin: 0 0 0.35rem;
+  color: var(--soft);
+  font-family: "DM Sans", "Segoe UI", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.recent-activity p {
+  margin: 0;
+  color: #35443d;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.site-footer {
+  border-top: 1px solid #dfe5dd;
+  color: var(--muted);
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+  padding: 1.3rem 1rem 1.6rem;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 700px) {
+  .site-header {
+    padding: 1.15rem 1.25rem;
+  }
+
+  .header-note {
+    max-width: 8rem;
+    text-align: right;
+  }
+
+  .dashboard {
+    width: min(100% - 2.5rem, 540px);
+  }
+
+  .intro {
+    padding: 3.2rem 0 2.4rem;
+  }
+
+  .projects-section {
+    padding-top: 1.8rem;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-summary {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .section-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .card-topline {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .project-card:hover {
+    transform: none;
+  }
+}

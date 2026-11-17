@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f6f2">
+    <title>Project Pulse</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#projects-heading">Skip to projects</a>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Project Pulse home">
+        <span class="brand-mark" aria-hidden="true">P</span>
+        <span>Project <strong>Pulse</strong></span>
+      </a>
+      <p class="header-note">A clear view of what’s moving</p>
+    </header>
+
+    <main class="dashboard">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">MONA’S PROJECT SPACE</p>
+        <h1 id="page-title">Good work, in motion.</h1>
+        <p class="intro-copy">A quick pulse check on the projects, people, and next steps shaping the work.</p>
+      </section>
+
+      <section class="projects-section" aria-labelledby="projects-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">THE BIG PICTURE</p>
+            <h2 id="projects-heading">Projects</h2>
+          </div>
+          <p class="section-note">Status, context, and ways to jump in</p>
+        </div>
+        <p id="project-status" class="load-message" role="status" aria-live="polite">Loading projects…</p>
+        <div id="project-list" class="project-grid" aria-busy="true"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Small steps add up. Find a place to make a difference.</p>
+    </footer>
+
+    <script>
+      const projectList = document.querySelector("#project-list");
+      const projectStatus = document.querySelector("#project-status");
+
+      function renderProjects(projects) {
+        projectList.replaceChildren();
+
+        for (const project of projects) {
+          const article = document.createElement("article");
+          article.className = "project-card";
+
+          const top = document.createElement("div");
+          top.className = "card-topline";
+          const status = document.createElement("span");
+          status.className = "status-pill";
+          status.textContent = `Status · ${project.status}`;
+          const priority = document.createElement("span");
+          priority.className = "priority-label";
+          priority.textContent = `Priority · ${project.priority}`;
+          top.append(status, priority);
+
+          const heading = document.createElement("h3");
+          heading.className = "project-name";
+          heading.textContent = project.name;
+
+          const owner = document.createElement("p");
+          owner.className = "project-owner";
+          owner.textContent = `Led by ${project.owner}`;
+
+          const summary = document.createElement("p");
+          summary.className = "project-summary";
+          summary.textContent = project.summary;
+
+          const activity = document.createElement("div");
+          activity.className = "recent-activity";
+          const activityLabel = document.createElement("h4");
+          activityLabel.textContent = "Recent activity";
+          const activityText = document.createElement("p");
+          activityText.textContent = project.recentActivity;
+          activity.append(activityLabel, activityText);
+
+          article.append(top, heading, owner, summary, activity);
+          projectList.append(article);
+        }
+
+        projectList.setAttribute("aria-busy", "false");
+      }
+
+      fetch("project-data.json")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Project data request failed (${response.status}).`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          if (!data || !Array.isArray(data.projects)) {
+            throw new Error("Project data is not in the expected format.");
+          }
+
+          if (data.projects.length === 0) {
+            projectStatus.textContent = "No projects to show yet. Check back soon.";
+            projectStatus.classList.add("empty-message");
+            projectList.setAttribute("aria-busy", "false");
+            return;
+          }
+
+          renderProjects(data.projects);
+          projectStatus.textContent = `${data.projects.length} projects`;
+          projectStatus.classList.add("project-count");
+        })
+        .catch(() => {
+          projectList.setAttribute("aria-busy", "false");
+          projectStatus.textContent = "We couldn’t load the projects. Please refresh the page to try again.";
+          projectStatus.classList.add("error-message");
+          projectStatus.setAttribute("role", "alert");
+        });
+    </script>
+  </body>
+</html>
